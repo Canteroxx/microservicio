@@ -11,12 +11,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+            .csrf(csrf -> csrf.disable()) // Desactiva CSRF (para pruebas con Postman o navegador)
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/h2-console/**").permitAll()
+                .requestMatchers("/api/**").permitAll() // Permitir acceso libre a /api/**
                 .anyRequest().authenticated()
             )
-            .csrf(csrf -> csrf.disable())
-            .headers(headers -> headers.frameOptions(frame -> frame.disable()));
+            .httpBasic(); // Autenticación básica si la necesitas
 
         return http.build();
     }
