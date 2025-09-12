@@ -15,7 +15,7 @@ import java.util.List;
 public class OfertaRepositoryImpl implements OfertaRepository {
 
     private final OfertaJpaRepository jpaRepository;
-    private final OfertaMapper ofertaMapper; 
+    private final OfertaMapper ofertaMapper;
 
     @Override
     public List<Oferta> findByCriterios(OfertaCriterio criterios) {
@@ -30,9 +30,8 @@ public class OfertaRepositoryImpl implements OfertaRepository {
                 criterios.jornadasLaborales(),
                 criterios.tiposContrato(),
                 criterios.origenesOferta(),
-                criterios.discapacidad()
-        ).stream()
-        .map(ofertaMapper::toDomain)
-        .toList();
+                criterios.discapacidad()).stream()
+                .map(ofertaMapper::toDomain)
+                .toList();
     }
 }

@@ -22,6 +22,5 @@ public class UsuarioEntity {
     private String email;
 
     @Column(nullable = false)
-    private String password; 
+    private String password;
 }
-

@@ -20,13 +20,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()) 
-            .cors(cors -> {})           
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/postulantes/**").permitAll() 
-                .requestMatchers("/ofertas/**").authenticated() 
-            )
-            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .csrf(csrf -> csrf.disable())
+                .cors(cors -> {
+                })
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/postulantes/**").permitAll()
+                        .requestMatchers("/ofertas/**").authenticated())
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

@@ -8,5 +8,6 @@ import org.mapstruct.Mapper;
 public interface UsuarioMapper {
 
     Usuario toDomain(UsuarioEntity entity);
+
     UsuarioEntity toEntity(Usuario domain);
 }

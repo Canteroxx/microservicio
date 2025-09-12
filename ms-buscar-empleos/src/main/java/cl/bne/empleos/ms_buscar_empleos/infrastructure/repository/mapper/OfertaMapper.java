@@ -8,5 +8,6 @@ import org.mapstruct.Mapper;
 public interface OfertaMapper {
 
     Oferta toDomain(OfertaEntity entity);
+
     OfertaEntity toEntity(Oferta domain);
 }

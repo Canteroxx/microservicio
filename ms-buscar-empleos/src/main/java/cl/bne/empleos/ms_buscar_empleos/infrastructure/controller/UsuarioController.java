@@ -20,7 +20,6 @@ public class UsuarioController {
     private final Registrar registrar;
     private final Loguear loguear;
 
-
     @PostMapping("/registrar")
     public ResponseEntity<Object> registrar(@RequestBody RegistrarRequest request) {
         try {
@@ -30,7 +29,6 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }
     }
-
 
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody LoguearRequest request) {
@@ -43,4 +41,3 @@ public class UsuarioController {
     }
 
 }
-
