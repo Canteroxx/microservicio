@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { loginPostulante } from "../services/PostulantesService";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { loginPostulante } from '../services/PostulantesService';
 
 const LoginForm = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    rut: "",
-    password: "",
+    rut: '',
+    password: '',
   });
 
-  const [mensaje, setMensaje] = useState("");
+  const [mensaje, setMensaje] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,13 +19,13 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMensaje("");
+    setMensaje('');
 
     try {
       const token = await loginPostulante(formData);
-      localStorage.setItem("jwt", token.token);
-      setMensaje("Login exitoso");
-      navigate("/buscar");
+      localStorage.setItem('jwt', token.token);
+      setMensaje('Login exitoso');
+      navigate('/buscar');
     } catch (err) {
       setMensaje(`Error: ${err.message}`);
     }
@@ -52,7 +52,9 @@ const LoginForm = () => {
           required
         />
         <button type="submit">Ingresar</button>
-        <p>¿No tienes cuenta? <Link to="/registrar">Regístrate aquí</Link></p>
+        <p>
+          ¿No tienes cuenta? <Link to="/registrar">Regístrate aquí</Link>
+        </p>
       </form>
       {mensaje && <p>{mensaje}</p>}
     </div>
